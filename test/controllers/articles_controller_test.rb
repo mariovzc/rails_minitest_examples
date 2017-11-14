@@ -11,6 +11,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get articles_url
     assert_response :success
+    assert_not_nil assigns(:articles) #verifica que me devuelva la lista de articulos
   end
 
   test "should get new" do
@@ -19,7 +20,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create article" do
-    assert_difference('Article.count') do
+    assert_difference('Article.count') do #verifica que la cantidad de articulos cambiaron
       post articles_url, params: { article: { body: @article.body, title: @article.title } }
     end
 
